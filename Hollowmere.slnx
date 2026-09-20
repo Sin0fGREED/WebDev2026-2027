@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/tests/">
+    <Project Path="tests/Hollowmere.Data.Tests/Hollowmere.Data.Tests.csproj" />
+  </Folder>
+  <Project Path="src/hollowmere.client/hollowmere.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="src/Hollowmere.Data/Hollowmere.Data.csproj" />
+  <Project Path="src/Hollowmere.Server/Hollowmere.Server.csproj" Id="0635e5cb-22da-4e7a-9677-bbbcf81c5f73" />
+</Solution>
