@@ -4,7 +4,7 @@ A web application for Hollowmere, an live action Guild as part of the Web Develo
 
 ### About the project
 
-Hollowmere is a guild that gave us an project to create a central application to manage its members, equipment, quests, training activities and encounter records. the application is based on the Hollowmere case description and is developed according to the requirements of the course manual.
+Hollowmere is a guild that requested us to create a central application to manage its members, equipment, quests, training activities and encounter records. the application is based on the Hollowmere case description and is developed according to the requirements of the course manual.
 
 ### Features
 
