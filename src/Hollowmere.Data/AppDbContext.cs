@@ -10,6 +10,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<Drill> Drills => Set<Drill>();
     public DbSet<DrillParticipant> DrillParticipants => Set<DrillParticipant>();
     public DbSet<Encounter> Encounters => Set<Encounter>();
+    public DbSet<Guild> Guilds => Set<Guild>();
+    public DbSet<GuildMember> GuildMembers => Set<GuildMember>();
     public DbSet<Item> Items => Set<Item>();
     public DbSet<ItemKind> ItemKinds => Set<ItemKind>();
     public DbSet<ItemQualification> ItemQualifications => Set<ItemQualification>();
@@ -18,8 +20,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<Report> Reports => Set<Report>();
     public DbSet<Request> Requests => Set<Request>();
     public DbSet<Role> Roles => Set<Role>();
-    public DbSet<UserRole> UserRoles => Set<UserRole>();
     public DbSet<User> Users => Set<User>();
+    public DbSet<UserRole> UserRoles => Set<UserRole>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

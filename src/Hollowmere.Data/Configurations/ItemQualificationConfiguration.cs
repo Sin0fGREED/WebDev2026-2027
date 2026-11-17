@@ -9,7 +9,7 @@ public class ItemQualificationConfiguration : IEntityTypeConfiguration<ItemQuali
 {
     public void Configure(EntityTypeBuilder<ItemQualification> builder)
     {
-        builder.HasKey(iq => new { iq.UserId, iq.ItemKindId });
+        builder.HasKey(iq => new { iq.GuildId, iq.UserId, iq.ItemKindId });
 
         builder.HasOne(iq => iq.ItemKind)
             .WithMany()
@@ -19,6 +19,12 @@ public class ItemQualificationConfiguration : IEntityTypeConfiguration<ItemQuali
         builder.HasOne(iq => iq.User)
             .WithMany()
             .HasForeignKey(iq => iq.UserId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+        builder.HasOne(iq => iq.Guild)
+            .WithMany()
+            .HasForeignKey(iq => iq.GuildId)
+            .IsRequired()
             .OnDelete(DeleteBehavior.NoAction);
 
         // to look up which users are trusted with an item kind

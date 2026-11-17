@@ -15,6 +15,10 @@ public class RequestConfiguration : IEntityTypeConfiguration<Request>
             .IsRequired()
             .HasDefaultValue(false);
 
+        builder.Property(r => r.HasParticipated)
+            .IsRequired()
+            .HasDefaultValue(false);
+
         builder.HasOne(r => r.User)
             .WithMany()
             .HasForeignKey(r => r.UserId)

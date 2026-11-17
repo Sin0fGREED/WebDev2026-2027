@@ -38,10 +38,16 @@ public class ItemConfiguration : IEntityTypeConfiguration<Item>
             .HasForeignKey(i => i.ItemKindId)
             .OnDelete(DeleteBehavior.NoAction);
 
-        // To look up items by ItemKindId
-        builder.HasIndex(i => i.ItemKindId);
+        builder.HasOne(i => i.Guild)
+            .WithMany()
+            .HasForeignKey(i => i.GuildId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.NoAction);
 
-        // To search by name
-        builder.HasIndex(i => i.Name);
+        // To look up items by ItemKindId for a specific guild
+        builder.HasIndex(i => new { i.GuildId, i.ItemKindId });
+
+        // To search by name for a specific guild
+        builder.HasIndex(i => new { i.GuildId, i.Name });
     }
 }

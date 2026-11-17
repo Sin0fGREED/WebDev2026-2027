@@ -5,6 +5,7 @@ public class Drill
     public int Id { get; set; }
 
     public Guid InstructorId { get; set; }
+    public Guid GuildId { get; set; }
     public int ItemKindId { get; set; }
 
     public required string Title { get; set; }
@@ -15,4 +16,5 @@ public class Drill
 
     public User Instructor { get; set; } = null!;
     public ItemKind ItemKind { get; set; } = null!;
+    public Guild Guild { get; set; } = null!;
 }

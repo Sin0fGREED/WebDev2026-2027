@@ -6,6 +6,7 @@ public class Quest
 
     public Guid LeaderId { get; set; }
     public int? CreatureId { get; set; }
+    public Guid GuildId { get; set; }
 
     public required string Village { get; set; }
     public required string Description { get; set; }
@@ -19,4 +20,5 @@ public class Quest
 
     public User Leader { get; set; } = null!;
     public Creature? Creature { get; set; }
+    public Guild Guild { get; set; } = null!;
 }

@@ -1,6 +1,6 @@
 @Hollowmere.Server_HostAddress = http://localhost:5241
 
-GET {{Hollowmere.Server_HostAddress}}/weatherforecast/
+GET {{Hollowmere.Server_HostAddress}}/creatures/
 Accept: application/json
 
 ###

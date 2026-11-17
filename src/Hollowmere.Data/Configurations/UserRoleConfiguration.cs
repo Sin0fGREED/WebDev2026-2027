@@ -9,7 +9,13 @@ public class UserRoleConfiguration : IEntityTypeConfiguration<UserRole>
 {
     public void Configure(EntityTypeBuilder<UserRole> builder)
     {
-        builder.HasKey(ur => new { ur.UserId, ur.RoleId });
+        builder.HasKey(ur => new { ur.GuildId, ur.UserId, ur.RoleId });
+
+        builder.HasOne(ur => ur.Guild)
+            .WithMany()
+            .HasForeignKey(ur => ur.GuildId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.NoAction);
 
         builder.HasOne(ur => ur.User)
             .WithMany()
