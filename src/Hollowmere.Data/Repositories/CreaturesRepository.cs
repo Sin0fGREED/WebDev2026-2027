@@ -4,14 +4,11 @@ namespace Hollowmere.Data.Repositories;
 
 public class CreaturesRepository(AppDbContext context)
 {
-    public IEnumerable<Creature> GetAll()
-    {
-        return context.Creatures;
-    }
-    public Creature? GetById(int id)
-    {
-        return context.Creatures.FirstOrDefault(c => c.Id == id);
-    }
+    public IQueryable<Creature> GetAll() =>
+        context.Creatures.AsQueryable();
+
+    public Creature? GetById(int id) =>
+        context.Creatures.FirstOrDefault(c => c.Id == id);
 
     public Creature Create(Creature creature)
     {
@@ -21,11 +18,8 @@ public class CreaturesRepository(AppDbContext context)
 
     public Creature Update(Creature creature)
     {
-        var model = GetById(creature.Id);
-        if (model is null)
-        {
-            throw new ArgumentException($"Creature with id {creature.Id} does not exist.");
-        }
+        var model = GetById(creature.Id)
+            ?? throw new ArgumentException($"Creature with id {creature.Id} does not exist.");
 
         model.Name = creature.Name;
         model.Region = creature.Region;
@@ -33,22 +27,24 @@ public class CreaturesRepository(AppDbContext context)
         model.IsDangerous = creature.IsDangerous;
         model.ImageUri = creature.ImageUri;
 
-        context.Creatures.Update(creature);
-
         return creature;
     }
 
-    public Creature Delete(int id)
+    public bool Delete(int id)
     {
-        var model = GetById(id);
-        if (model is null)
-        {
-            throw new ArgumentException($"Creature with id {id} does not exist.");
-        }
+        var model = GetById(id)
+            ?? throw new ArgumentException($"Creature with id {id} does not exist.");
         context.Creatures.Remove(model);
 
-        return model;
+        return true;
     }
 
-    public Task SaveChangesAsync() => context.SaveChangesAsync();
+    public bool Exists(int id) =>
+        context.Creatures.Any(c => c.Id == id);
+
+    public bool Exists(Guid guildId, string name, string region) =>
+        context.Creatures.Any(c => c.GuildId == guildId && c.Name == name && c.Region == region);
+
+    public Task SaveChangesAsync() =>
+        context.SaveChangesAsync();
 }
