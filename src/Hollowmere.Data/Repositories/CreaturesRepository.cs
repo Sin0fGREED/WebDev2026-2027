@@ -21,11 +21,7 @@ public class CreaturesRepository(AppDbContext context)
         var model = GetById(creature.Id)
             ?? throw new ArgumentException($"Creature with id {creature.Id} does not exist.");
 
-        model.Name = creature.Name;
-        model.Region = creature.Region;
-        model.Description = creature.Description;
-        model.IsDangerous = creature.IsDangerous;
-        model.ImageUri = creature.ImageUri;
+        model.Update(creature);
 
         return creature;
     }

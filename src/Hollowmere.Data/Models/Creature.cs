@@ -13,4 +13,13 @@ public class Creature
     public string? ImageUri { get; set; }
 
     public Guild Guild { get; set; } = null!;
+
+    public void Update(Creature creature)
+    {
+        Name = creature.Name;
+        Region = creature.Region;
+        Description = creature.Description;
+        IsDangerous = creature.IsDangerous;
+        ImageUri = creature.ImageUri;
+    }
 }
