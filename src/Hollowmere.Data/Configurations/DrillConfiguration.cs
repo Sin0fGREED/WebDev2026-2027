@@ -28,6 +28,12 @@ public class DrillConfiguration : IEntityTypeConfiguration<Drill>
             .IsRequired()
             .HasDefaultValue(false);
 
+        // To look up all drlils for a specific guild o a specific date
+        builder.HasIndex(d => new { d.GuildId, d.Date });
+
+        // To look up all drills for a specific guild, by a specific instructor
+        builder.HasIndex(d => new { d.GuildId, d.InstructorId });
+
         // To look for drills with a specific ItemKindId
         builder.HasIndex(d => d.ItemKindId);
 
@@ -36,6 +42,12 @@ public class DrillConfiguration : IEntityTypeConfiguration<Drill>
 
         // To look up Drills on a specific Date (or range)
         builder.HasIndex(d => d.Date);
+
+        builder.HasOne(d => d.Guild)
+            .WithMany()
+            .HasForeignKey(d => d.GuildId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.NoAction);
 
         builder.HasOne(d => d.Instructor)
             .WithMany()

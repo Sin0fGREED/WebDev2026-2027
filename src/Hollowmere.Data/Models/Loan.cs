@@ -6,6 +6,7 @@ public class Loan
 
     public int ItemId { get; set; }
     public Guid UserId { get; set; }
+    public Guid GuildId { get; set; }
 
     public DateTimeOffset LoanDate { get; set; }
     public DateTimeOffset? ReturnDate { get; set; }
@@ -14,4 +15,5 @@ public class Loan
 
     public Item Item { get; set; } = null!;
     public User User { get; set; } = null!;
+    public Guild Guild { get; set; } = null!;
 }

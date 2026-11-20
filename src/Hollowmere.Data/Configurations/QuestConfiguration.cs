@@ -31,6 +31,12 @@ public class QuestConfiguration : IEntityTypeConfiguration<Quest>
             .HasForeignKey(q => q.CreatureId)
             .OnDelete(DeleteBehavior.NoAction);
 
+        builder.HasOne(q => q.Guild)
+            .WithMany()
+            .HasForeignKey(q => q.GuildId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.NoAction);
+
         builder.Property(q => q.DepartureDay)
             .IsRequired();
 

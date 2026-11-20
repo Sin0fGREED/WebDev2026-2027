@@ -33,8 +33,14 @@ public class LoanConfiguration : IEntityTypeConfiguration<Loan>
             .HasForeignKey(l => l.UserId)
             .OnDelete(DeleteBehavior.NoAction);
 
-        // To look up a user's loans, filtered by return date
-        builder.HasIndex(l => new { l.UserId, l.ReturnDate });
+        builder.HasOne(l => l.Guild)
+            .WithMany()
+            .HasForeignKey(l => l.GuildId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.NoAction);
+
+        // To look up a user's loans, filtered by return date for a specific guild
+        builder.HasIndex(l => new { l.GuildId, l.UserId, l.ReturnDate });
 
         // To look up whether an item has been returned
         builder.HasIndex(l => new { l.ItemId, l.ReturnDate });

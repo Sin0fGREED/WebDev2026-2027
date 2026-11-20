@@ -6,6 +6,7 @@ public class Request
     public int QuestId { get; set; }
 
     public bool IsConfirmed { get; set; }
+    public bool HasParticipated { get; set; }
 
     public User User { get; set; } = null!;
     public Quest Quest { get; set; } = null!;

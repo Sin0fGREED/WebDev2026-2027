@@ -4,6 +4,7 @@ public class Item
 {
     public int Id { get; set; }
 
+    public Guid GuildId { get; set; }
     public int ItemKindId { get; set; }
 
     public required string Name { get; set; }
@@ -14,4 +15,5 @@ public class Item
     public bool IsDangerous { get; set; }
 
     public ItemKind ItemKind { get; set; } = null!;
+    public Guild Guild { get; set; } = null!;
 }

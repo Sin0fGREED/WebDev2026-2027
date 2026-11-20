@@ -10,6 +10,4 @@ public class User
     public bool IsActive { get; set; } = true;
 
     public required string DisplayName { get; set; }
-
-    public bool IsTrained { get; set; }
 }

@@ -29,5 +29,8 @@ public class EncounterConfiguration : IEntityTypeConfiguration<Encounter>
 
         // To look up all encounters for a specific Report
         builder.HasIndex(e => e.ReportId);
+
+        // To look up all encounters for a specific Creature
+        builder.HasIndex(e => e.CreatureId);
     }
 }
