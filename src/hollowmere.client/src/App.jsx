@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState } from 'react';
 import './App.css';
+import Armoury from './pages/Armoury';
 
 function App() {
     const [forecasts, setForecasts] = useState();
